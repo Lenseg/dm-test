@@ -1,0 +1,153 @@
+/*General*/
+
+.container 
+{
+	height: 100%;
+	width: 100%;
+	box-sizing: border-box;
+	padding: 35px 40px;
+}
+
+.content-section
+{
+	display: flex;
+	flex-direction: column;
+	align-content: stretch;
+	justify-items: stretch;
+	align-items: stretch;
+	height: 100%;
+	width: 100%;
+	justify-content: stretch;
+}
+
+/*General end*/
+
+/*Top*/
+
+.content-section__top
+{
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+	width: 100%;
+	box-sizing: border-box;
+	margin-bottom: 30px;
+}
+
+.top_rules
+{
+	margin-left: 230px;
+	font-size: 18px;
+	line-height: 21px;
+	color: #042635;
+}
+
+.rule-name
+{
+	color: #4420E8;
+	text-transform: lowercase;
+	font-weight: bold;
+}
+
+/*Top end*/
+
+/*Bottom*/
+
+.content-section__bottom
+{
+	display: flex;
+	flex-direction: row;
+	justify-content: stretch;
+}
+
+.bottom_rules
+{
+	margin-left: 230px;
+	margin-right: 230px;
+}
+
+.content-bottom__left
+{
+	flex: 1;	
+}
+
+.content-bottom__right
+{
+	flex: 2;
+
+	background: #FFFFFF;
+	border: 2px solid #F1F6FD;
+	box-sizing: border-box;
+	box-shadow: 0px 2px 4px rgba(4, 41, 57, 0.25);
+
+}
+
+.right_rules
+{
+	margin-left: 70px;
+	padding: 30px 70px;
+	box-sizing: border-box;
+}
+
+.left_rules
+{
+	padding-top: 30px;
+}
+
+.left-section__buttons
+{
+	margin-top: 20px;
+}
+
+/*Bottom end*/
+
+/*List*/
+
+.rules-row
+{
+	padding: 9px 2px;
+}
+
+.rules-list
+{
+	flex: 4 !important;
+	max-height: 550px;
+	margin-bottom: 130px !important;
+	overflow: hidden;
+}
+
+.rules-list__head
+{
+	border-bottom: 1px solid #3D71BF !important;
+}
+
+.rules-list__body
+{
+	overflow: auto;
+}
+
+.rules-list__body::-webkit-scrollbar 
+{
+	width: 6px;
+}
+
+/* Track */
+.rules-list__body::-webkit-scrollbar-track 
+{
+	background: linear-gradient(180deg, rgba(0, 64, 160, 0.1) 0%, rgba(26, 82, 165, 0.1) 77.78%);
+	opacity: 0.1;
+	border-radius: 28px;
+	width: 6px;
+}
+
+/* Handle */
+.rules-list__body::-webkit-scrollbar-thumb
+{
+	background: #093751;
+	border-radius: 28px;
+	width: 6px;
+	height: 39px;
+}
+
+/*List end*/
