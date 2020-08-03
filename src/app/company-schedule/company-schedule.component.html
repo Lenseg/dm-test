@@ -1,0 +1,163 @@
+<div class="container">
+
+	<section class="section__left">
+		<label class="header-search-label__element search-label left-input">
+			<input type="search" placeholder="Поиск" class="search-input" name="search" id="search_input">
+			<button type="submit" class="search-button" id="search_submit"><img class="button__image"
+					src="assets/images/Search.svg"></button>
+		</label>
+
+		<label class="header-select-label select-label left-input">
+			<select name="filter" id="filter" class="select-elem">
+				<option value="1">Фильтр</option>
+				<option value="2">Трудовой</option>
+				<option value="3">Не трудовой</option>
+			</select>
+		</label>
+
+		<label class="left-input left-input_checkbox">
+			<label class="box-label box-label_checkbox">
+				<input type="checkbox" class="box-label__input box-label__input_checkbox">
+			</label>
+			Убрать завершенные акции
+		</label>
+
+		<button class="button"><img src="assets/images/Plus.svg" class="button__image  button__image_left">
+			Забронировать услугу</button>
+
+		<div class="calendar">
+			<div class="calendar__title">
+				<button class="arrow-button arrow-button_left"></button> Июль <button class="arrow-button arrow-button_right"></button>
+			</div>
+			<div class="calendar__body">
+				<div class="calendar__week calendar__week_head">
+					<div class="calendar__day">ПН</div>
+					<div class="calendar__day">ВТ</div>
+					<div class="calendar__day">СР</div>
+					<div class="calendar__day">ЧТ</div>
+					<div class="calendar__day">ПТ</div>
+					<div class="calendar__day">СБ</div>
+					<div class="calendar__day">ВС</div>
+				</div>
+				<div class="calendar__week">
+					<div class="calendar__day"></div>
+					<div class="calendar__day"></div>
+					<div class="calendar__day"></div>
+					<div class="calendar__day">1</div>
+					<div class="calendar__day">2</div>
+					<div class="calendar__day calendar__day_weekend">3</div>
+					<div class="calendar__day calendar__day_weekend">4</div>
+				</div>
+				<div class="calendar__week">
+					<div class="calendar__day">5</div>
+					<div class="calendar__day">6</div>
+					<div class="calendar__day">7</div>
+					<div class="calendar__day">8</div>
+					<div class="calendar__day">9</div>
+					<div class="calendar__day calendar__day_weekend">10</div>
+					<div class="calendar__day calendar__day_weekend calendar__day_current">11</div>
+				</div>
+				<div class="calendar__week">
+					<div class="calendar__day">12</div>
+					<div class="calendar__day">13</div>
+					<div class="calendar__day">14</div>
+					<div class="calendar__day">15</div>
+					<div class="calendar__day">16</div>
+					<div class="calendar__day calendar__day_weekend">17</div>
+					<div class="calendar__day calendar__day_weekend">18</div>
+				</div>
+				<div class="calendar__week">
+					<div class="calendar__day">19</div>
+					<div class="calendar__day">20</div>
+					<div class="calendar__day">21</div>
+					<div class="calendar__day">22</div>
+					<div class="calendar__day">23</div>
+					<div class="calendar__day calendar__day_weekend">24</div>
+					<div class="calendar__day calendar__day_weekend">25</div>
+				</div>
+				<div class="calendar__week">
+					<div class="calendar__day">26</div>
+					<div class="calendar__day">27</div>
+					<div class="calendar__day">28</div>
+					<div class="calendar__day">29</div>
+					<div class="calendar__day">30</div>
+					<div class="calendar__day calendar__day_weekend"></div>
+					<div class="calendar__day calendar__day_weekend"></div>
+				</div>
+			</div>
+		</div>
+
+		<div class="left-title">Загрузка расписания</div>
+		<label class="left-row">
+			<div class="left-row__title">Ресурсы:</div>
+			<label class="header-select-label select-label left-row__select">
+				<select name="filter" id="filter" class="select-elem">
+					<option value="1">Все</option>
+					<option value="2">Все</option>
+					<option value="3">Все</option>
+				</select>
+			</label>
+		</label>
+		<label class="left-row left-row_bottom">
+			<div class="left-row__title">Загрузка:</div> <div class="left-row__load">40%</div>
+		</label>
+
+
+		<div class="left-title">Легенда</div>
+		<div class="legend-item legend_promo">Промоакции</div>
+		<div class="legend-item legend_service">Услуги</div>
+		<div class="legend-item legend_reserve">Зарезервированное время</div>
+		<div class="legend-item legend_fail">Акция не сработала</div>
+		<div class="legend-item legend_add"><span class="task-add">+</span> Добавить услугу/акцию</div>
+		<div class="legend-item legend_waste">- Неиспользованное время</div>
+		<div class="legend-item legend_promo-end">Акция завершена</div>
+		<div class="legend-item legend_service-end">Услуга завершена</div>
+		<div class="legend-item legend_empty">Незарезервированное время</div>
+		<div class="legend-item legend_reserve-end">Зарезервированное время</div>
+	</section>
+
+	<section class="section__right">
+		<div class="schedule-table">
+
+			<div class="table-row table-row_head">
+				<div class="table-col table-col_time"></div>
+				<div class="table-col" *ngFor="let s of schedule; let i = index;">
+					{{s.name}}
+				</div>
+			</div>
+
+			<div class="table-row {{GetRowClass(t.hour)}}" *ngFor="let t of time; let i = index;">
+				<div class="table-col table-col_time">
+					<div class="time-content">{{t.hour}}:00</div>
+				</div>
+
+				<div class="table-col" *ngFor="let s of schedule; let i = index;">
+					<div *ngIf="s.HasTasks(t.hour)" class="table-col__container">
+						<div class="table-task {{j.Classes()}}"
+							*ngFor="let j of s.GetTasks(t.hour).tasks; let i = index;">
+							<div class="task-name">{{j.name}}</div>
+							<div class="task-time">
+								{{t.hour}}:<span *ngIf="j.start < 10">0</span>{{j.start}} -
+								<span *ngIf="j.start + j.duration == 60">{{t.hour + 1}}:00</span>
+								<span *ngIf="j.start + j.duration < 60">{{t.hour}}:{{j.start + j.duration}}</span>
+							</div>
+						</div>
+						<div class="table-task" *ngIf="!s.GetTasks(t.hour).Check()">
+							<span *ngIf="currentHour <= t.hour" class="task-add">+</span>
+							<span *ngIf="currentHour > t.hour">-</span>
+						</div>
+					</div>
+					<div *ngIf="!s.HasTasks(t.hour)" class="table-col__container">
+						<div class="table-task">
+							<span *ngIf="currentHour <= t.hour" class="task-add">+</span>
+							<span *ngIf="currentHour > t.hour">-</span>
+						</div>
+					</div>
+					
+				</div>
+
+			</div>
+		</div>
+	</section>
+
+</div>
