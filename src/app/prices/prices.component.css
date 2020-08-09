@@ -1,0 +1,219 @@
+.container
+{
+	padding: 40px;
+}
+
+.section-top
+{
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	margin-bottom: 40px;
+}
+
+.header-search-label
+{
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	margin-right: 5px;
+}
+
+.header-search-label__title
+{
+	font-family: Roboto;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 14px;
+	line-height: 16px;
+	color: rgba(0, 0, 0, 0.6);
+	margin-right: 25px;
+}
+
+.header-search-label__element
+{
+	width: 457px;
+}
+
+.header-select-label
+{
+	margin-right: 20px;
+}
+
+.head-sales
+{
+	margin-right: 30px;
+}
+
+.head-toggle
+{
+	margin: 0 15px 0 30px !important;
+}
+
+/*List*/
+
+.rules-list__head
+{
+	border-bottom: 1px solid rgba(61, 113, 191, 0.3);
+
+}
+
+.rules-list__body
+{
+	height: 620px;
+}
+
+.list__sale
+{
+	margin-left: 100px;
+}
+
+.list__util
+{
+	flex: 1.5;
+}
+
+.list-row_b
+{
+	justify-content: space-between;
+}
+
+.details-menu
+{
+	display: none;
+	position: absolute;
+	left: -9999999px;
+	z-index: 50;
+	width: 212px;
+	height: 199px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	align-items: center;
+	box-sizing: border-box;
+	padding: 17px 13px;
+	color: #000;
+
+
+	background: #F1F6FD;
+	/* main shad */
+
+	box-shadow: 0px 1px 4px rgba(9, 47, 64, 0.2);
+}
+
+.details-menu_active
+{
+	left: 1600px;
+}
+
+.details-button
+{
+	display: none;
+	cursor: pointer;
+}
+
+.details-toggle
+{
+	margin-left: -46px;
+}
+
+.details-select
+{
+	width: 90%;
+}
+
+.details-select .items
+{
+	width: 100%;
+}
+
+.list-row_b:hover .details-button
+{
+	display: block;
+}
+
+.list__n
+{
+	width: 40px;
+	margin-right: 20px;
+}
+
+.list__koef
+{
+	width: 98px;
+	text-align: center;
+	margin-right: 20px;
+}
+
+.list__pname
+{
+	width: 425px;
+}
+
+.list__pmin
+{
+	width: 120px;
+}
+
+.list__pmax
+{
+	width: 162px;
+}
+
+.list__pmax_first
+{
+	margin-left: 25px;
+}
+
+.list__pmax_last
+{
+	margin-right: 80px !important;
+}
+
+/*Footer*/
+
+.footer
+{
+	background: #FDFAF1;
+	border-radius: 0px 0px 4px 4px;
+	padding: 25px;
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+	margin: 0 -40px 0 -40px;
+}
+
+.footer__all
+{
+	margin-right: 620px;
+	margin-left: 108px;
+	font-size: 18px;
+	line-height: 21px;
+}
+
+.status
+{
+	margin-right: 80px;
+	font-size: 18px;
+	line-height: 21px;
+}
+
+.status_closed
+{
+	color: rgba(4, 38, 53, 0.5);
+}
+
+.status__value
+{
+	font-weight: bold;
+	font-size: 18px;
+	line-height: 21px;
+	color: #000;
+}
+
+.status__title
+{
+	font-size: 12px;
+	line-height: 14px;
+	color: rgba(0, 0, 0, 0.5);
+}

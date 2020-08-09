@@ -1,0 +1,97 @@
+<div class="container">
+	<section class="section-top">
+		<label class="header-search-label">
+			<span class="header-search-label__title">Поиск </span>
+			<label class="header-search-label__element search-label">
+				<input type="search" class="search-input" name="search" id="search_input">
+				<button type="submit" class="search-button" id="search_submit"><img class="button__image"
+						src="assets/images/Search.svg"></button>
+			</label>
+		</label>
+
+		<label for="select_01" class="select header-select-label">
+			<input type="radio" name="list" value="not_changed" id="bg_01" class="select-bg select-radio select-list" checked />
+			<input type="radio" name="list" value="not_changed" class="select-select select-radio select-list" id="select_01">
+			<label class="bg" for="bg_01"></label>
+			<div class="items">
+				<input type="radio" name="list" value="first_value" id="list[0]" class="select-radio select-list">
+				<label for="list[0]">Трудовой</label>
+				<input type="radio" name="list" value="second_value" id="list[1]" class="select-radio select-list">
+				<label for="list[1]">Не трудовой</label>
+				<span id="text" class="select-text">Фильтр</span>
+			</div>
+		</label>
+
+		<label class="header-date-label__element date-label">
+			<input type="date" class="date-input" name="date" id="search_input" placeholder="Период">
+		</label>
+
+	</section>
+
+	<section class="section-bottom">
+
+		<div class="schedule">
+			<div class="schedule__title">
+
+				<div class="schedule-title__top schedule-row">
+					<div class="list-item list-item_big">Ресуры</div>
+
+					<div class="list-item list-item_small" *ngFor="let d of dates; let i = index">{{d.date}}</div>
+
+					<div class="list-item list-item_sum">Итого в текущем месяце</div>
+				</div>
+
+				<div class="schedule-title__bottom schedule-row">
+					<div class="list-item list-item_big">Дни</div>
+
+					<div class="list-item list-item_small" *ngFor="let d of dates; let i = index">{{d.name}}</div>
+
+					<div class="list-item list-item_medium list-item_medium-first">План</div>
+					<div class="list-item list-item_medium">Отработано</div>
+					<div class="list-item list-item_medium">Осталось</div>
+				</div>
+
+			</div>
+
+			<div class="schedule__body">
+
+				<div class="schedule-cat" *ngFor="let c of cats; let i = index">
+					<div class="cat-title" (click)="ToggleCat(i);">
+						<div class="cat-toggle" id="cat-toggle_{{i}}">-</div> {{c.name}}
+					</div>
+
+					<div class="cat-body" id="cat-body_{{i}}">
+						<div class="schedule-row" *ngFor="let r of c.resources; let i = index">
+							<div class="list-item list-item_big list-item_name">{{r.name}}</div>
+
+							<div class="list-item list-item_small" *ngFor="let a of r.activities">
+								<div class="_green-bg" *ngIf="a.task == 1">1</div>
+								<div class="_red-bg" *ngIf="a.task == 0">0</div>
+							</div>
+
+							<div class="list-item list-item_medium list-item_medium-first _right-line">{{r.plan}}</div>
+							<div class="list-item list-item_medium">{{r.done}}</div>
+							<div class="list-item list-item_medium _left-line">{{r.left}}</div>
+
+						</div>
+					</div>
+
+				</div>
+
+
+			</div>
+		</div>
+
+		<div class="footer">
+			<div class="status">
+				<span class="status__title">Статус: </span>
+				<span class="status__value">утверждено</span>
+			</div>
+
+			<button class="button" disabled><img src="assets/images/Approve_W.svg" class="button__image">
+				Утвердить</button>
+			<button class="button"><img src="assets/images/Cancel.svg" class="button__image"> Отозвать</button>
+		</div>
+
+	</section>
+</div>
