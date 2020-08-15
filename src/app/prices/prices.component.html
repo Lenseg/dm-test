@@ -1,0 +1,151 @@
+<div class="container">
+	<section class="section-top">
+		<label class="header-search-label">
+			<span class="header-search-label__title">Поиск </span>
+			<label class="header-search-label__element search-label">
+				<input type="search" class="search-input" name="search" id="search_input">
+				<button type="submit" class="search-button" id="search_submit"><img class="button__image" src="assets/images/Search.svg"></button>
+			</label>
+		</label>
+
+		<label for="select_01" class="select header-select-label">
+			<input type="radio" name="list" value="not_changed" id="bg_01" class="select-bg select-radio select-list" checked />
+			<input type="radio" name="list" value="not_changed" class="select-select select-radio select-list" id="select_01">
+			<label class="bg" for="bg_01"></label>
+			<div class="items">
+				<input type="radio" name="list" value="first_value" id="list[0]" class="select-radio select-list">
+				<label for="list[0]">Трудовой</label>
+				<input type="radio" name="list" value="second_value" id="list[1]" class="select-radio select-list">
+				<label for="list[1]">Не трудовой</label>
+				<span id="text" class="select-text">Фильтр</span>
+			</div>
+		</label>
+
+		<label class="head-sales">
+			<label class="switch head-toggle">
+				<input class='switch__input' type="checkbox">
+				<span class="switch__slider"></span>
+			</label>
+			Открыть продажи
+		</label>
+
+		<label class="input-label">
+			<input type="text" class="input" placeholder="Минимальный доход в месяц">
+		</label>
+
+		<button class="button">Посчитать</button>
+
+	</section>
+
+	<section class="section-bottom">
+
+		<section class="left-section left-section__list resources-list">
+			<div class="list-row list-row_head  rules-list__head">
+				<div class="list__n">#</div>
+				<div class="list__pname">Ресурс</div>
+				<div class="list__pmin"><img src="assets/images/Sort.svg" class="sort-image"> Цена max</div>
+				<div class="list__pmin"><img src="assets/images/Sort.svg" class="sort-image"> Цена min</div>
+				<div class="list__koef"><img src="assets/images/Sort.svg" class="sort-image"> Коэф</div>
+				<div class="list__pmin"><img src="assets/images/Sort.svg" class="sort-image"> Целевой доход</div>
+				<div class="list__pmax list__pmax_first"><img src="assets/images/Sort.svg" class="sort-image"> Max доход в месяц</div>
+				<div class="list__pmax list__pmax_last"><img src="assets/images/Sort.svg" class="sort-image"> Min доход в месяц</div>
+				<div class="list__service"><img src="assets/images/Sort.svg" class="sort-image"> Продажа</div>
+			</div>
+			<div class="list__body rules-list__body">
+				<div class="list-row list-row_b" *ngFor="let r of data; let i = index">
+					<div class="list__n">{{i + 1}}</div>
+					<div class="list__pname">{{r.name}}</div>
+					<div class="list__pmin">{{r.priceMax}}</div>
+					<div class="list__pmin">{{r.priceMin}}</div>
+					<div class="list__koef">{{r.koef}}</div>
+					<div class="list__pmin">{{r.goalIncome}}</div>
+					<div class="list__pmax list__pmax_first">{{r.maxMonthlyIncome}}</div>
+					<div class="list__pmax list__pmax_last">{{r.minMonthlyIncome}}</div>
+
+					<div class="list__service">
+						<div *ngIf="r.sale == 0" class="status_closed">
+							<img src="assets/images/Lock.svg" class="status-img">
+							Заблокирована системой
+						</div>
+
+						<div *ngIf="r.sale == 1" class="status_active">
+							<img src="assets/images/Active.svg" class="status-img">
+							Открыта
+						</div>
+					</div>
+
+					<div class="details-button" (click)="ShowDetails(i);" id="details-btn_{{i}}"><img class="details-image" src="assets/images/Details.svg"></div>
+					<div class="details-menu" id="details_{{i}}">
+						<label class="details-toggle">
+							<label class="switch _details">
+								<input class='switch__input _details' type="checkbox">
+								<span class="switch__slider _details"></span>
+							</label>
+							Заблокировать
+						</label>
+
+						<label for="select_a_{{i}}" class="select header-select-label details-select _top-select">
+							<input type="radio" name="list_a_{{i}}" value="not_changed" id="bg_a_{{i}}" class="select-bg select-radio _details select-list" checked />
+							<input type="radio" name="list_a_{{i}}" value="not_changed" class="select-select select-radio _details select-list" id="select_a_{{i}}">
+							<label class="bg _details" for="bg_a_{{i}}"></label>
+							<div class="items _details">
+								<input type="radio" name="list_a_{{i}}" value="first_value" id="list_a_{{i}}[0]" class="select-radio _details select-list">
+								<label for="list_a_{{i}}[0]" class="_details">На 1 день</label>
+								<input type="radio" name="list_a_{{i}}" value="second_value" id="list_a_{{i}}[1]" class="select-radio _details select-list">
+								<label for="list_a_{{i}}[1]" class="_details">На 1 неделю</label>
+								<input type="radio" name="list_a_{{i}}" value="thrird_value" id="list_a_{{i}}[2]" class="select-radio _details select-list">
+								<label for="list_a_{{i}}[2]" class="_details">На 1 месяц</label>
+								<span id="text_a_{{i}}" class="select-text _details">Заблокировать</span>
+							</div>
+						</label>
+
+						<label class="details-toggle" disabled>
+							<label class="switch _details">
+								<input class='switch__input _details' type="checkbox" disabled>
+								<span class="switch__slider _details"></span>
+							</label>
+							Уведомления
+						</label>
+
+						<label for="select_b_{{i}}" class="select header-select-label details-select">
+							<input type="radio" name="list_b_{{i}}" value="not_changed" id="bg_b_{{i}}" class="select-bg select-radio _details select-list" checked />
+							<input type="radio" name="list_b_{{i}}" value="not_changed" class="select-select select-radio _details select-list" id="select_b_{{i}}">
+							<label class="bg _details" for="bg_b_{{i}}"></label>
+							<div class="items _details">
+								<input type="radio" name="list_b_{{i}}" value="first_value" id="list_b_{{i}}[0]" class="select-radio _details select-list">
+								<label for="list_b_{{i}}[0]" class="_details">За час и полчаса</label>
+								<input type="radio" name="list_b_{{i}}" value="second_value" id="list_b_{{i}}[1]" class="select-radio _details select-list">
+								<label for="list_b_{{i}}[1]" class="_details">За день</label>
+								<input type="radio" name="list_b_{{i}}" value="thrird_value" id="list_b_{{i}}[2]" class="select-radio _details select-list">
+								<label for="list_b_{{i}}[2]" class="_details">За неделю</label>
+								<span id="text_b_{{i}}" class="select-text _details">Уведомить</span>
+							</div>
+						</label>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<div class="footer">
+			<div class="footer__all">
+				Всего ресурсов: 32
+			</div>
+
+			<div class="status">
+				<div class="status__title">Всего: </div>
+				<div class="status__value">10 000₽</div>
+			</div>
+			<div class="status">
+				<div class="status__title">Всего: </div>
+				<div class="status__value">355 000₽</div>
+
+			</div>
+			<div class="status">
+				<div class="status__title">Всего: </div>
+				<div class="status__value">120 000₽</div>
+
+			</div>
+		</div>
+
+	</section>
+</div>
